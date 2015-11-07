@@ -1,0 +1,6 @@
+acl allow admin@HERZEN all all
+
+#ldap endoint. routingkey: accounting.ldap.*
+acl allow ldap@HERZEN all all
+
+#acl deny-log all all
