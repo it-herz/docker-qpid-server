@@ -1,6 +1,6 @@
-acl allow admin@HERZEN all all
+acl allow admin@HSPU all all
 
 #ldap endoint. routingkey: accounting.ldap.*
-acl allow ldap@HERZEN all all
+acl allow ldap@HSPU all all
 
 #acl deny-log all all
