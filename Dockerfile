@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get dist-upgrade -y && apt-get install -y uuid-dev clang libssl-dev libsasl2-dev wget cmake make ruby-dev doxygen ruby valgrind pkg-config libboost-all-dev libdb5.3++-dev libdb-dev libaio-dev swig libxqilla-dev libxerces-c-dev libpthread-stubs0-dev libnss3-dev libnspr4-dev python-dev graphviz help2man
 
-RUN cd /root && mkdir proton && cd proton && wget https://dist.apache.org/repos/dist/dev/qpid/proton/0.11.0-rc/qpid-proton-0.11.0-rc.tar.gz && tar xzvpf qpid-proton* && \
+RUN cd /root && mkdir proton && cd proton && wget https://dist.apache.org/repos/dist/release/qpid/proton/0.11.1/qpid-proton-0.11.1.tar.gz && tar xzvpf qpid-proton* && \
     cd qpid-proton* && mkdir build && cd build && CXX=clang++ CC=clang cmake -DCMAKE_CXX_FLAGS=-std=c++11 -DSYSINSTALL_BINDINGS=ON -DCMAKE_INSTALL_PREFIX=/usr .. && \
     make && make install
 
