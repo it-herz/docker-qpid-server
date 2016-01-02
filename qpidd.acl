@@ -1,0 +1,2 @@
+acl allow admin@REALM all all
+acl deny-log all all
