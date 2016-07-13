@@ -29,7 +29,7 @@ RUN /usr/bin/easy_install supervisor-stdout
 RUN /usr/bin/easy_install supervisor-logging
 ADD supervisord.conf /etc/supervisord.conf
 
-VOLUME ["/var/db/qpidd","/var/lib/qpidd/qpidd.sasldb"]
+VOLUME ["/var/db/qpidd"]
 
 ADD qpidd.acl /usr/etc/qpid/qpidd.acl.dist
 ADD qpidd.conf /usr/etc/qpid/qpidd.conf.dist
