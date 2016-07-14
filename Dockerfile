@@ -21,7 +21,8 @@ RUN cd /root && mkdir qpid-web && cd qpid-web && svn co https://svn.apache.org/r
     cd qpid-qmf2-tools/target && mkdir /qmfweb && mv qpid-qmf2-tools-0.32-bin.tar.gz /qmfweb && cd /qmfweb && \
     tar xzvpf qpid-qmf2-tools-0.32-bin.tar.gz && mv qpid-qmf2-tools/0.32/* . && rm -f qpid-qmf2-tools-0.32-bin.tar.gz
 
-#RUN mkdir -p /var/lib/qpidd && echo admin | saslpasswd2 -f /var/lib/qpidd/qpidd.sasldb admin
+RUN cd /root && mkdir qpid-tools && cd qpid-tools && wget http://apache-mirror.rbc.ru/pub/apache/qpid/0.32/qpid-tools-0.32.tar.gz && \
+    tar xzvpf qpid-tools* && cd qpid-tools* && ./setup.py build install
 
 RUN mkdir /var/log/supervisor/
 RUN /usr/bin/easy_install supervisor
