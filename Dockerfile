@@ -21,7 +21,7 @@ RUN cd /root && mkdir qpid && cd qpid && wget http://apache-mirror.rbc.ru/pub/ap
 RUN cd /root && mkdir qpid-web && cd qpid-web && svn co https://svn.apache.org/repos/asf/qpid/trunk/qpid/tools/src/java/ . && \
     cd /root/qpid-web && find . -name pom.xml -exec sed -i "s/0.32-SNAPSHOT/0.32/g" {} \; && mvn clean package && \
     cd qpid-qmf2-tools/target && mkdir /qmfweb && mv qpid-qmf2-tools-0.32-bin.tar.gz /qmfweb && cd /qmfweb && \
-    tar xzvpf qpid-qmf2-tools-0.32-bin.tar.gz && mv qpid-qmf2-tools/0.32/* . && rm -f /root/qpid-web
+    tar xzvpf qpid-qmf2-tools-0.32-bin.tar.gz && mv qpid-qmf2-tools/0.32/* . && rm -rf /root/qpid-web
 
 RUN mkdir /var/log/supervisor/ && mkdir /var/lib/qpidd
 RUN /usr/bin/easy_install supervisor supervisor-stdout supervisor-logging
