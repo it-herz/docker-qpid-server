@@ -18,8 +18,8 @@ RUN cd /root && mkdir qpid && cd qpid && wget http://apache-mirror.rbc.ru/pub/ap
     wget http://apache-mirror.rbc.ru/pub/apache/qpid/python/1.35.0/qpid-python-1.35.0.tar.gz && tar xzvpf qpid-python* && cd qpid-python* && \
     ./setup.py build install && rm -rf /root/qpid
 
-RUN cd /root && mkdir qpid-web && cd qpid-web && svn co https://svn.apache.org/repos/asf/qpid/trunk/qpid/tools/src/java/ . && \
-    cd /root/qpid-web && find . -name pom.xml -exec sed -i "s/6.0.5-SNAPSHOT/0.32/g" {} \; && mvn clean package && \
+RUN cd /root && mkdir qpid-web && cd qpid-web && svn co https://svn.apache.org/repos/asf/qpid/branches/0.32/qpid/tools/src/java/ . && \
+    cd /root/qpid-web && mvn clean package && \
     cd qpid-qmf2-tools/target && mkdir /qmfweb && mv qpid-qmf2-tools-0.32-bin.tar.gz /qmfweb && cd /qmfweb && \
     tar xzvpf qpid-qmf2-tools-0.32-bin.tar.gz && mv qpid-qmf2-tools/0.32/* . && rm -rf /root/qpid-web
 
