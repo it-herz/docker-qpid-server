@@ -5,7 +5,7 @@ MAINTAINER Dmitrii Zolotov <dzolotov@herzen.spb.ru>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN sed -i 's~http://httpredir.debian.org~http://mirror.yandex.ru~ig' /etc/apt/sources.list && \
-    apt-get update && apt-get dist-upgrade -y && apt-get install -y uuid-dev clang libssl-dev libsasl2-dev wget cmake make ruby-dev doxygen ruby valgrind pkg-config libboost-all-dev libdb5.3++-dev libdb-dev libaio-dev swig libxqilla-dev libxerces-c-dev libpthread-stubs0-dev libnss3-dev libnspr4-dev python-dev graphviz help2man krb5-user libgssapi-krb5-2 subversion maven openjdk-7-jdk python-setuptools sasl2-bin && \
+    apt-get update && apt-get dist-upgrade -y && apt-get install -y uuid-dev clang libssl-dev libsasl2-dev wget cmake make ruby-dev doxygen ruby valgrind pkg-config libboost-all-dev libdb5.3++-dev libdb-dev libaio-dev swig libxqilla-dev libxerces-c-dev libpthread-stubs0-dev libnss3-dev libnspr4-dev python-dev graphviz help2man krb5-user libgssapi-krb5-2 subversion maven openjdk-8-jdk python-setuptools sasl2-bin && \
     apt-get clean && rm -rf /var/lib/apt/lists/* 
 
 RUN cd /root && mkdir proton && cd proton && wget https://dist.apache.org/repos/dist/release/qpid/proton/0.26.0/qpid-proton-0.26.0.tar.gz && tar xzvpf qpid-proton* && \
