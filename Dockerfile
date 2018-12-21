@@ -8,11 +8,11 @@ RUN sed -i 's~http://httpredir.debian.org~http://mirror.yandex.ru~ig' /etc/apt/s
     apt-get update && apt-get dist-upgrade -y && apt-get install -y uuid-dev clang libssl-dev libsasl2-dev wget cmake make ruby-dev doxygen ruby valgrind pkg-config libboost-all-dev libdb5.3++-dev libdb-dev libaio-dev swig libxqilla-dev libxerces-c-dev libpthread-stubs0-dev libnss3-dev libnspr4-dev python-dev graphviz help2man krb5-user libgssapi-krb5-2 subversion maven openjdk-7-jdk python-setuptools sasl2-bin && \
     apt-get clean && rm -rf /var/lib/apt/lists/* 
 
-RUN cd /root && mkdir proton && cd proton && wget https://dist.apache.org/repos/dist/release/qpid/proton/0.17.0/qpid-proton-0.17.0.tar.gz && tar xzvpf qpid-proton* && \
+RUN cd /root && mkdir proton && cd proton && wget https://dist.apache.org/repos/dist/release/qpid/proton/0.26.0/qpid-proton-0.26.0.tar.gz && tar xzvpf qpid-proton* && \
     cd qpid-proton* && mkdir build && cd build && CXX=clang++ CC=clang cmake -DCMAKE_CXX_FLAGS=-std=c++11 -DSYSINSTALL_BINDINGS=ON -DCMAKE_INSTALL_PREFIX=/usr .. && \
     make && make install && rm -rf /root/proton
 
-RUN cd /root && mkdir qpid && cd qpid && wget http://apache-mirror.rbc.ru/pub/apache/qpid/cpp/1.36.0/qpid-cpp-1.36.0.tar.gz && tar xzvpf qpid-cpp* && cd qpid-cpp* && \
+RUN cd /root && mkdir qpid && cd qpid && wget http://apache-mirror.rbc.ru/pub/apache/qpid/cpp/1.39.0/qpid-cpp-1.39.0.tar.gz && tar xzvpf qpid-cpp* && cd qpid-cpp* && \
     mkdir build && cd build && CXX=clang++ CC=clang cmake -DBUILD_TESTING=no -DBUILD_PROBES=no -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make all && make install && \
     cd /root/qpid && cd qpid-cpp* && cd management/python && ./setup.py build install && cd ../.. && \
     wget http://apache-mirror.rbc.ru/pub/apache/qpid/python/1.35.0/qpid-python-1.35.0.tar.gz && tar xzvpf qpid-python* && cd qpid-python* && \
