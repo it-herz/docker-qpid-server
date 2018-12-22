@@ -14,8 +14,9 @@ RUN cd /root && mkdir proton && cd proton && wget https://dist.apache.org/repos/
 
 RUN cd /root && mkdir qpid && cd qpid && wget http://apache-mirror.rbc.ru/pub/apache/qpid/cpp/1.39.0/qpid-cpp-1.39.0.tar.gz && tar xzvpf qpid-cpp* && cd qpid-cpp* && \
     mkdir build && cd build && CXX=clang++ CC=clang cmake -DBUILD_TESTING=no -DBUILD_PROBES=no -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr .. && make all && make install && \
-    cd /root/qpid && cd qpid-cpp* && cd management/python && ./setup.py build install && cd ../.. && \
-    wget http://apache-mirror.rbc.ru/pub/apache/qpid/python/1.35.0/qpid-python-1.35.0.tar.gz && tar xzvpf qpid-python* && cd qpid-python* && \
+    cd /root/qpid && cd qpid-cpp* && cd management/python && ./setup.py build install && cd ../..
+
+RUN wget http://apache-mirror.rbc.ru/pub/apache/qpid/python/1.37.0/qpid-python-1.37.0.tar.gz && tar xzvpf qpid-python* && cd qpid-python* && \
     ./setup.py build install && rm -rf /root/qpid
 
 RUN cd /root && mkdir qpid-web && cd qpid-web && svn co https://svn.apache.org/repos/asf/qpid/branches/0.32/qpid/tools/src/java/ . && \
